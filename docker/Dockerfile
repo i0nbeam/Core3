@@ -26,6 +26,7 @@ RUN set -xe; \
     ld.lld --version; \
     apt-get update; \
     apt-get install -y --fix-missing \
+	default-jdk \
 	binutils \
 	db5.3-util \
 	gdb \
