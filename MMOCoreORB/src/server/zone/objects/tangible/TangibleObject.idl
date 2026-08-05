@@ -691,6 +691,8 @@ class TangibleObject extends SceneObject {
 			return sliceable;
 		else if (isMissionTerminal())
 			return sliceable;
+		else if (isBountyTerminal())
+			return sliceable;
 		else if (isWeaponObject())
 			return sliceable;
 		else if (isArmorObject())

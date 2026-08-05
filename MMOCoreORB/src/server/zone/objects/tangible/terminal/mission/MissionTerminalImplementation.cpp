@@ -33,9 +33,9 @@ void MissionTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* m
 int MissionTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	ManagedReference<CityRegion*> city = player->getCityRegion().get();
 
-	if (selectedID == 69 && player->hasSkill("combat_smuggler_slicing_01")) {
-		if (isBountyTerminal())
-			return 0;
+	if (selectedID == 69 && player->hasSkill("combat_smuggler_novice")) {
+		//if (isBountyTerminal())
+		//	return 0;
 
 		if (city != nullptr && !city->isClientRegion() && city->isBanned(player->getObjectID())) {
 			player->sendSystemMessage("@city/city:banned_services"); // You are banned from using this city's services.

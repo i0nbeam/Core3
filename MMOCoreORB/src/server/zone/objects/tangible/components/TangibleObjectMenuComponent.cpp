@@ -30,8 +30,8 @@ void TangibleObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObjec
 			hasSkill = false;
 		else if (sceneObject->isContainerObject())
 			hasSkill = false; // Let the container handle our slice menu
-		else if (sceneObject->isMissionTerminal() && !player->hasSkill("combat_smuggler_slicing_01"))
-			hasSkill = false;
+		//else if (sceneObject->isMissionTerminal() && !player->hasSkill("combat_smuggler_slicing_01"))
+			//hasSkill = false;
 		else if (sceneObject->isWeaponObject() && (!inventory->hasObjectInContainer(sceneObject->getObjectID()) || !player->hasSkill("combat_smuggler_slicing_02")))
 			hasSkill = false;
 		else if (sceneObject->isArmorObject() && (!inventory->hasObjectInContainer(sceneObject->getObjectID()) || !player->hasSkill("combat_smuggler_slicing_03")))
