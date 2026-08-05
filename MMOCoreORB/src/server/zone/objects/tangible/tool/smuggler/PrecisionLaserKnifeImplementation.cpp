@@ -37,15 +37,13 @@ int PrecisionLaserKnifeImplementation::handleObjectMenuSelect(CreatureObject* pl
 	}
 
 	if (target->isMissionTerminal()) {
-		//if (!player->hasSkill("combat_smuggler_slicing_01")) {
-		if (!player->hasSkill("combat_smuggler_novice")) {
+		if (!player->hasSkill("combat_smuggler_slicing_01")) {
 			return 0;
 		}
 
 		MissionTerminal* terminal = target.castTo<MissionTerminal*>();
 
-		// if (terminal == nullptr || terminal->isBountyTerminal())
-		if (terminal == nullptr)
+		if (terminal == nullptr || terminal->isBountyTerminal())
 			return 0;
 
 		ManagedReference<CityRegion*> city = player->getCityRegion().get();

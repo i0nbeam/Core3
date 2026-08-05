@@ -42,7 +42,7 @@ class MissionTerminal extends Terminal {
 		boolean sliceTempFix = true; // Temporary Hack.
 
 		if (isBountyTerminal()) {
-			setSliceable(sliceTempFix);
+			setSliceable(!sliceTempFix);
 		} else {
 			setSliceable(sliceTempFix);
 		}
