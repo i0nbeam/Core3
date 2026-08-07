@@ -36,6 +36,18 @@ if [ ! -d "${HOME_DIR}/mysql" ]; then
     core3_firstboot
 fi
 
+# core3_boot() {
+#     if [ -f ${HOME_DIR}/.env ]; then
+#         source ${HOME_DIR}/.env
+#     else
+#         env |
+#         egrep -v '^SHELL=|^PWD=|^LOGNAME=|^HOME=|^LANG=|^LS_COLORS=|^TERM=|^USER=|^SHLVL=|^PATH=|^MAIL=|^OLDPWD=|^_=' |
+#         sort |
+#         sed -e "s/=\(.*\)$/='\1'/" -e 's/^/export /' > ${HOME_DIR}/.env
+#         chown ${RUN_USER}:${RUN_USER} ${HOME_DIR}/.env
+#     fi
+# }
+
 core3_boot() {
     if [ -f ${HOME_DIR}/.env ]; then
         source ${HOME_DIR}/.env
@@ -46,7 +58,20 @@ core3_boot() {
         sed -e "s/=\(.*\)$/='\1'/" -e 's/^/export /' > ${HOME_DIR}/.env
         chown ${RUN_USER}:${RUN_USER} ${HOME_DIR}/.env
     fi
+
+    if [ "${DBHOST}" = "127.0.0.1" ]; then
+        /etc/init.d/mariadb start
+    fi
 }
+
+# # Ensure the persistent mysql directory exists
+# mkdir -p "${HOME_DIR}/mysql"
+
+# # If /var/lib/mysql isn't a symlink, replace it.
+# if [ ! -L /var/lib/mysql ]; then
+#     rm -rf /var/lib/mysql
+#     ln -s "${HOME_DIR}/mysql" /var/lib/mysql
+# fi
 
 core3_boot
 

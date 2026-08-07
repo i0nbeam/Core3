@@ -130,7 +130,7 @@ ENV STATUSPORT=${PORT_GROUP}455 \
     DBUSER=swgemu \
     ADMIN_USER=admin \
     REPOS='Core3' \
-    REPO_PUBLIC_URL=https://github.com/swgemu \
+    REPO_PUBLIC_URL=https://github.com/i0nbeam \
     REPO_PUBLIC_BRANCH='unstable'
 
 ENV PATH=${HOME_DIR}/bin:/usr/local/bin:${PATH}
@@ -142,7 +142,8 @@ COPY files /
 VOLUME ${HOME_DIR}
 
 RUN set -xe; \
-    if [ ! -d /var/run/mysqld ]; then \
+    #if [ ! -d /var/run/mysqld ]; then \
+    if true; then \
         mkdir -vp /var/run/mysql /var/run/mysqld; \
         chown -vR mysql:mysql /var/run/mysqld; \
         chmod 777 /var/run/mysqld; \

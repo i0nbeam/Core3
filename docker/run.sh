@@ -9,6 +9,7 @@ source ./env-base
 
 RUN_FORCE=false
 RUN_KILL=false
+RUN_CLEAN=false
 
 while [ $# -gt 0 ]
 do
